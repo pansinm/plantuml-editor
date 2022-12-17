@@ -1,0 +1,17 @@
+.Browser {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.Browser_Editor {
+  width: 50%;
+  position: relative;
+}
+
+.Browser_Content {
+  position: relative;
+  display: flex;
+  flex: 1;
+  height: calc(100% - 46px);
+}

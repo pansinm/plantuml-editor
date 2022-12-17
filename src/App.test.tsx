@@ -3,7 +3,8 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 
 test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const {container} = render(<App />);
+  // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+  const sidebar = container.querySelector('.App_Sidebar')
+  expect(sidebar).toBeInTheDocument();
 });

@@ -1,0 +1,31 @@
+.Toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.Toolbar span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1px;
+}
+
+.icon-create-file::before {
+  font-family: FontAwesome;
+  color: cornflowerblue;
+  content: "\f15b";
+  font-size: 12px;
+}
+
+.icon-create-dir::before {
+  font-family: FontAwesome;
+  color: darkcyan;
+  content: "\f07b";
+  font-size: 14px;
+}
+
+.icon-close::before {
+  font-family: FontAwesome;
+  color: gray;
+  content: "\f00d";
+}

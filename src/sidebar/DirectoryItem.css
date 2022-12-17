@@ -1,0 +1,14 @@
+.DirectoryItem {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 6px;
+}
+
+.DirectoryItem__Item {
+  flex: 1;
+}
+
+.DirectoryItem__Toolbar {
+}
