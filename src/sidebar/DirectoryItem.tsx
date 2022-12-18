@@ -9,7 +9,7 @@ export default function DirectoryItem({ treeNode }: { treeNode: TreeNode }) {
       <div className="Directory__Item">
         <FileItemWithFileIcon treeNode={treeNode} />
       </div>
-      <Toolbar />
+      <Toolbar treeNode={treeNode}/>
     </div>
   );
 }

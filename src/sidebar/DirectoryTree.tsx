@@ -11,13 +11,9 @@ import "@sinm/react-file-tree/styles.css";
 import { activatedFileState, treeState } from "../store";
 import datasource from "../datasource";
 import DirectoryItem from "./DirectoryItem";
-import FileItem from "./FileItem";
 
 const itemRenderer = (treeNode: TreeNode) => {
-  if (treeNode.type === "directory") {
-    return <DirectoryItem treeNode={treeNode} />;
-  }
-  return <FileItem treeNode={treeNode} />;
+  return <DirectoryItem treeNode={treeNode} />;
 };
 
 function DirectoryTree() {
