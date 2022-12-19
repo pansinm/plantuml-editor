@@ -48,8 +48,9 @@ class IndexdbDatasource extends Dexie {
     const id = await this.files.get({ path });
     if (id) {
       await this.files.update(id, { content });
+    } else {
+      throw new Error(`${path} not exists!`)
     }
-    throw new Error(`${path} exists`);
   }
 
   async deleteFile(path: string) {
