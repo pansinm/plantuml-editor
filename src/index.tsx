@@ -1,4 +1,6 @@
 import React from "react";
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import "./index.css";

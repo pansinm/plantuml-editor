@@ -3,9 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 6px;
+  padding: 0 12px;
   cursor: default;
   user-select: none;
+}
+
+.file-tree__tree-item.activated {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .DirectoryItem__Item {

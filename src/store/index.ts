@@ -7,7 +7,7 @@ export const treeState = atom<TreeNode | undefined>({
   default: undefined,
 });
 
-export const tabsState = atom<TabProperties[]>({
+export const openedFilesState = atom<string[]>({
   key: "tabs",
   default: [],
 });

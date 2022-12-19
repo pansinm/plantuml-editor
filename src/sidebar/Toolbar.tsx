@@ -2,7 +2,8 @@ import { TreeNode, utils } from "@sinm/react-file-tree";
 import React from "react";
 import { useRecoilState } from "recoil";
 import datasource from "../datasource";
-import { activatedFileState, tabsState, treeState } from "../store";
+import { useCloseTab, useOpenFile } from "../hooks";
+import { activatedFileState, openedFilesState, treeState } from "../store";
 import "./Toolbar.css";
 
 interface ToolbarProps {
@@ -11,21 +12,22 @@ interface ToolbarProps {
 
 export default function Toolbar({ treeNode }: ToolbarProps) {
   const [tree, setTree] = useRecoilState(treeState);
-  const [tabs, setTabs] = useRecoilState(tabsState);
-  const [activeFile, setActiveFile] = useRecoilState(activatedFileState);
+  const [files, setTabs] = useRecoilState(openedFilesState);
+  const closeTab = useCloseTab();
+  const openFile = useOpenFile();
 
   const deleteFile: React.MouseEventHandler = (e) => {
     e.stopPropagation();
     const y = window.confirm(`Delete ${utils.getFileName(treeNode.uri)}?`);
     if (y) {
-      const remainTabs = tabs.filter(
+      const needClosedFiles = files.filter(
         (tab) =>
-          tab.id !== treeNode.uri || !tab.id.startsWith(treeNode.uri + "/")
+          tab === treeNode.uri ||
+          tab.startsWith(
+            treeNode.uri.endsWith("/") ? treeNode.uri : treeNode.uri + "/"
+          )
       );
-      if (!remainTabs.find((tab) => tab.id === activeFile)) {
-        setActiveFile(remainTabs[remainTabs.length - 1]?.id || "");
-      }
-      setTabs(remainTabs);
+      needClosedFiles.forEach((file) => closeTab(file));
       datasource.deleteFile(treeNode.uri.slice(7));
       setTree(utils.removeTreeNode(tree, treeNode.uri));
     }
@@ -39,11 +41,14 @@ export default function Toolbar({ treeNode }: ToolbarProps) {
       const filepath =
         (parent + "/" + encodeURIComponent(filename)).replace(/^\/+/, "/") +
         ".puml";
-      datasource.createFile(filepath, "file");
+      const uri = "file://" + filepath;
+      datasource.createFile(filepath, "file").then(() => {
+        openFile(uri);
+      });
       setTree(
         utils.assignTreeNode(
           utils.appendTreeNode(tree, treeNode.uri, {
-            uri: "file://" + filepath,
+            uri,
             type: "file",
           }),
           treeNode.uri,

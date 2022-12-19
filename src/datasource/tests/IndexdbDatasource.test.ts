@@ -18,7 +18,6 @@ test("toTree", () => {
     },
   ]);
   expect(tree).toEqual({
-    content: "",
     uri: "file:///",
     path: "/",
     type: "directory",
@@ -26,7 +25,6 @@ test("toTree", () => {
     updatedAt: 2,
     children: [
       {
-        content: "",
         createdAt: 1,
         path: "/test",
         type: "directory",

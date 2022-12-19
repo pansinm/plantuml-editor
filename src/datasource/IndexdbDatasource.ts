@@ -21,12 +21,12 @@ class IndexdbDatasource extends Dexie {
     });
   }
 
-  async createFile(path: string, type: FileType) {
+  async createFile(path: string, type: FileType, content = "") {
     const file = await this.files.get({ path });
     if (!file) {
       const file = {
         path,
-        content: "",
+        content,
         createdAt: Date.now(),
         updatedAt: Date.now(),
         type,
@@ -55,7 +55,7 @@ class IndexdbDatasource extends Dexie {
   async deleteFile(path: string) {
     const children = await this.files
       .where("path")
-      .startsWith(path + "/")
+      .startsWith(path.endsWith("/") ? path : path + "/")
       .primaryKeys();
     const file = await this.files.get({ path });
     await this.files.bulkDelete(children);
@@ -65,10 +65,10 @@ class IndexdbDatasource extends Dexie {
   }
 
   parentPath(path: string) {
-    if (path === '/') {
-      return ''
+    if (path === "/") {
+      return "";
     }
-    return path.replace(/\/[^/]*?$/, "") || '/';
+    return path.replace(/\/[^/]*?$/, "") || "/";
   }
 
   async rename(path: string, name: string) {
@@ -97,6 +97,7 @@ class IndexdbDatasource extends Dexie {
   fileToTree(files: File[]) {
     const map: { [key: string]: TreeNode } = {};
     for (let file of files) {
+      delete (file as any).content;
       map[file.path] = {
         ...file,
         uri: "file://" + file.path,
@@ -117,7 +118,6 @@ class IndexdbDatasource extends Dexie {
     Object.values(map).forEach((node) => {
       const path = node.uri.slice(7);
       const parent = this.parentPath(path);
-      console.log(parent, path)
       if (map[parent]) {
         if (!map[parent].children) {
           map[parent].children = [];
@@ -125,7 +125,6 @@ class IndexdbDatasource extends Dexie {
         map[parent].children?.push(node);
       }
     });
-     console.log(map)
     return map["/"];
   }
 

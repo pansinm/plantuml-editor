@@ -12,7 +12,7 @@ function App() {
         <DirectoryTree />
       </div>
       <div className="App_Browser">
-        <Browser />
+         <Browser />
       </div>
     </div>
   );
