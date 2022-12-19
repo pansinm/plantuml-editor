@@ -4,6 +4,8 @@
   justify-content: space-between;
   align-items: center;
   padding-right: 6px;
+  cursor: default;
+  user-select: none;
 }
 
 .DirectoryItem__Item {

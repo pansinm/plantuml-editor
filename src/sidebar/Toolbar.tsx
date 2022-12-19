@@ -67,7 +67,7 @@ export default function Toolbar({ treeNode }: ToolbarProps) {
         utils.assignTreeNode(
           utils.appendTreeNode(tree, treeNode.uri, {
             uri: "file://" + filepath,
-            type: "file",
+            type: "directory",
           }),
           treeNode.uri,
           { expanded: true }

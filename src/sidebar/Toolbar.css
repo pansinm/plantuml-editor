@@ -14,18 +14,31 @@
   font-family: FontAwesome;
   color: cornflowerblue;
   content: "\f15b";
-  font-size: 12px;
+  font-size: 11px;
+  cursor: pointer;
 }
 
 .icon-create-dir::before {
   font-family: FontAwesome;
+  margin-top: 2px;
   color: darkcyan;
   content: "\f07b";
   font-size: 14px;
+  cursor: pointer;
 }
 
 .icon-close::before {
   font-family: FontAwesome;
   color: gray;
   content: "\f00d";
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.DirectoryItem .Toolbar {
+  display: none;
+}
+
+.DirectoryItem:hover .Toolbar {
+  display: flex;
 }
