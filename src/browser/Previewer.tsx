@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { contentState } from "../store";
+import "./Previewer.css";
 const { encode } = require("plantuml-encoder");
 
 export default function Previewer() {
@@ -11,31 +12,20 @@ export default function Previewer() {
     setLoading(true);
   }, [url]);
   return (
-    <div style={{ position: "relative" }}>
+    <div className="Previewer">
       <img
         alt="PlantUML Diagram"
         src={url}
         onLoad={() => setLoading(false)}
         onError={() => setLoading(false)}
       ></img>
-      {loading && (
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            display: 'flex',
-            alignItems:'center',
-            justifyContent: 'center',
-            background: 'rgba(255,255,255,0.8)',
-            color: '#666'
-          }}
-        >
-          Loading
-        </div>
-      )}
+      {loading && <div className="Previewer__loading">Loading</div>}
+      <div className="Previewer__Footer">
+        <span style={{color: '#333', marginRight: 10}}>All data stored in local IndexDB</span>
+        <a href="https://github.com/pansinm/plantuml-editor">
+          <span className="fa fa-github"></span>
+        </a>
+      </div>
     </div>
   );
 }
