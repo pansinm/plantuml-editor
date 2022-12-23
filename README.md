@@ -1,5 +1,5 @@
 # PlantUML Editor
 
-PlantUML Online Editor with intelligence
+[PlantUML Online Editor](https://pansinm.github.io/plantuml-editor/)
 
 ![](screenrecord.gif)
