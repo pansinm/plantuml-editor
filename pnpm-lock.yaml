@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@sinm/monaco-plantuml': ^0.5.3
+  '@sinm/monaco-plantuml': ^0.5.4
   '@sinm/react-chrome-tabs': ^2.1.3
   '@sinm/react-file-tree': ^1.1.0
   '@testing-library/jest-dom': ^5.16.5
@@ -26,7 +26,7 @@ specifiers:
   web-vitals: ^2.1.4
 
 dependencies:
-  '@sinm/monaco-plantuml': 0.5.3
+  '@sinm/monaco-plantuml': 0.5.4
   '@sinm/react-chrome-tabs': 2.1.3_biqbaboplfbrettd7655fr4n2y
   '@sinm/react-file-tree': 1.1.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
@@ -2067,8 +2067,8 @@ packages:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
     dev: false
 
-  /@sinm/monaco-plantuml/0.5.3:
-    resolution: {integrity: sha512-qyViocnA3HYw/mHe72hLuIyJSBlX5W5NrwMT+oWKzenUeDR/lb8WuqJ3qBpHa+vUPPkPlckKrBXghtNltyj5MA==}
+  /@sinm/monaco-plantuml/0.5.4:
+    resolution: {integrity: sha512-pOm4NG+ooUm/2kPUPEf41QbXX6Qc4Jeec0HE+CW2q1C62yiDMzyX0ryQV0FvWKH9C1bAD88psUqwVThrHAVWUg==}
     dependencies:
       dexie: 3.2.2
       lodash: 4.17.21
